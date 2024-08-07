@@ -23,7 +23,7 @@ end
 require_relative "lib/instant_search/engine"
 require_relative "lib/instant_search/proxy_middleware"
 
-on(:after_initializers) do
+DiscourseEvent.on(:after_initializers) do #rubocop:disable Discourse/UsePluginInstanceOn
   # Must be added after DebugExceptions so that postgres errors trigger failover
   middleware =
     if defined?(Logster::Middleware::DebugExceptions)
