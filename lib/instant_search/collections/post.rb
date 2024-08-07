@@ -59,7 +59,7 @@ module ::InstantSearch::Collections
 
     def should_index?
       return false if @object.deleted_at.present?
-      return false unless @object.topic.present?
+      return false if @object.topic.blank?
       return false if @object.topic.deleted_at.present?
 
       return true if SiteSetting.index_private_content
